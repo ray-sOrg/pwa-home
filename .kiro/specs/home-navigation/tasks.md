@@ -32,6 +32,7 @@
 
 
 
+
   - [x] 2.1 定义 TypeScript 类型和接口
 
     - 创建 types/index.ts 定义 NavigationCardData、Category、AppState
@@ -70,8 +71,11 @@
 - [ ] 3. Checkpoint - 确保所有测试通过
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 4. 核心 UI 组件
-  - [ ] 4.1 实现 NavigationCard 组件
+- [-] 4. 核心 UI 组件
+
+
+  - [x] 4.1 实现 NavigationCard 组件
+
     - 创建 components/NavigationCard.tsx
     - 显示图标、名称、描述
     - 实现 Framer Motion 悬停动画
@@ -79,19 +83,24 @@
   - [ ]* 4.2 编写属性测试：卡片渲染完整性
     - **Property 1: Card rendering completeness**
     - **Validates: Requirements 1.2**
-  - [ ] 4.3 实现 CategorySection 组件
+  - [x] 4.3 实现 CategorySection 组件
+
+
     - 创建 components/CategorySection.tsx
     - 显示分类标题和卡片网格
     - _Requirements: 2.1, 2.2_
+
   - [ ] 4.4 实现分类分组逻辑
     - 创建 lib/grouping.ts 实现 groupCardsByCategory 函数
     - _Requirements: 2.1_
   - [ ]* 4.5 编写属性测试：分类分组正确性
     - **Property 2: Category grouping correctness**
+
     - **Validates: Requirements 2.1**
   - [ ] 4.6 实现 NavigationGrid 组件
     - 创建 components/NavigationGrid.tsx
     - 整合 CategorySection，实现交错入场动画
+
     - _Requirements: 1.1, 6.1_
   - [ ] 4.7 实现 SkeletonCard 加载骨架屏
     - 创建 components/SkeletonCard.tsx
