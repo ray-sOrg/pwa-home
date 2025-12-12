@@ -1,22 +1,33 @@
 "use client";
 
-import { Sun, Moon } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
+import * as React from "react";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export function ThemeToggle() {
-    const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
 
-    return (
-        <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
-            title={theme === "dark" ? "切换到浅色" : "切换到深色"}
-        >
-            {theme === "dark" ? (
-                <Moon className="w-5 h-5 text-white/60" />
-            ) : (
-                <Sun className="w-5 h-5 text-black/60" />
-            )}
-        </button>
-    );
+  // 避免服务端渲染和客户端渲染不一致
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  return (
+    <button
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      className="rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-white/10"
+      aria-label="切换主题"
+    >
+      {theme === "light" ? (
+        <Moon className="h-5 w-5" />
+      ) : (
+        <Sun className="h-5 w-5" />
+      )}
+    </button>
+  );
 }

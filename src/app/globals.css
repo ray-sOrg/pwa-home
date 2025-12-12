@@ -1,15 +1,27 @@
 @import "tailwindcss";
 
+/* Tailwind CSS v4 dark mode 配置 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background-light: #ffffff;
+  --color-background-dark: #000000;
+  --color-foreground-light: #000000;
+  --color-foreground-dark: #ffffff;
+}
+
 /* 浅色主题 - Apple 风格纯白简约 */
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
+  --background: var(--color-background-light);
+  --foreground: var(--color-foreground-light);
+  color-scheme: light;
 }
 
 /* 深色主题 */
 .dark {
-  --background: #000000;
-  --foreground: #ffffff;
+  --background: var(--color-background-dark);
+  --foreground: var(--color-foreground-dark);
+  color-scheme: dark;
 }
 
 html {
