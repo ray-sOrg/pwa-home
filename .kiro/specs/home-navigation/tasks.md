@@ -102,7 +102,8 @@
     - 整合 CategorySection，实现交错入场动画
 
     - _Requirements: 1.1, 6.1_
-  - [ ] 4.7 实现 SkeletonCard 加载骨架屏
+  - [x] 4.7 实现 SkeletonCard 加载骨架屏
+
     - 创建 components/SkeletonCard.tsx
     - _Requirements: 1.4_
 
@@ -130,7 +131,10 @@
     - 保存新顺序到 store
     - _Requirements: 3.5, 6.4_
 
-- [ ] 7. 主题切换
+- [-] 7. 主题切换
+
+
+
   - [ ] 7.1 实现主题切换逻辑
     - 创建 lib/theme.ts 实现 toggleTheme 函数
     - 支持 light/dark/system 三种模式

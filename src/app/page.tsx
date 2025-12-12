@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { useNavigationStore } from "@/store/navigation-store";
 import { NavigationGrid } from "@/components/NavigationGrid";
-import { Home } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { Cloud } from "lucide-react";
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +17,6 @@ export default function HomePage() {
   }, [loadFromStorage]);
 
   const handleEditCard = (id: string) => {
-    // TODO: 打开编辑弹窗
     console.log("Edit card:", id);
   };
 
@@ -27,25 +27,25 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-900">
+    <div className="min-h-screen bg-white dark:bg-black transition-colors">
       {/* 头部 */}
-      <header className="sticky top-0 z-10 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white">
-              <Home className="w-5 h-5" />
+      <header className="sticky top-0 z-10 bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-black/5 dark:border-white/10">
+        <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center">
+              <Cloud className="w-4 h-4 text-blue-500" />
             </div>
-            <h1 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-              家庭导航
+            <h1 className="text-lg font-semibold text-black dark:text-white">
+              家庭云
             </h1>
           </div>
 
-          {/* TODO: 添加搜索栏和设置按钮 */}
+          <ThemeToggle />
         </div>
       </header>
 
       {/* 主内容 */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
+      <main className="max-w-lg mx-auto px-4 py-6">
         <NavigationGrid
           isLoading={isLoading}
           onEditCard={handleEditCard}

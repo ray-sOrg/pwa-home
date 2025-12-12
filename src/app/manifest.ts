@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "家庭导航",
-    short_name: "家庭导航",
+    name: "家庭云",
+    short_name: "家庭云",
     description: "家庭网络服务导航入口",
     start_url: "/",
     display: "standalone",

@@ -13,42 +13,8 @@ export const defaultCategories: Category[] = [
   { id: "tools", name: "工具服务", order: 2, icon: "Wrench" },
 ];
 
-// 默认卡片
-export const defaultCards: NavigationCardData[] = [
-  {
-    id: "1",
-    name: "家庭影视",
-    url: "http://192.168.1.100:8096",
-    icon: "Tv",
-    description: "Jellyfin 媒体服务器",
-    categoryId: "media",
-    order: 0,
-    createdAt: Date.now(),
-    updatedAt: Date.now(),
-  },
-  {
-    id: "2",
-    name: "家庭相册",
-    url: "http://192.168.1.100:2283",
-    icon: "Image",
-    description: "Immich 照片管理",
-    categoryId: "storage",
-    order: 0,
-    createdAt: Date.now(),
-    updatedAt: Date.now(),
-  },
-  {
-    id: "3",
-    name: "文件管理",
-    url: "http://192.168.1.100:5244",
-    icon: "FolderOpen",
-    description: "Alist 文件列表",
-    categoryId: "storage",
-    order: 1,
-    createdAt: Date.now(),
-    updatedAt: Date.now(),
-  },
-];
+// 默认卡片 - 空数组
+export const defaultCards: NavigationCardData[] = [];
 
 // 保存卡片到 localStorage
 export function saveCards(cards: NavigationCardData[]): void {
