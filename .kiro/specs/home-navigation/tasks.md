@@ -28,18 +28,26 @@
     - 创建 vitest.config.ts
     - _Requirements: 测试策略_
 
-- [ ] 2. 数据模型和状态管理
-  - [ ] 2.1 定义 TypeScript 类型和接口
+- [x] 2. 数据模型和状态管理
+
+
+
+  - [x] 2.1 定义 TypeScript 类型和接口
+
     - 创建 types/index.ts 定义 NavigationCardData、Category、AppState
     - _Requirements: 1.2, 2.1, 3.2_
-  - [ ] 2.2 实现数据验证函数
+
+  - [x] 2.2 实现数据验证函数
+
     - 创建 lib/validation.ts 实现卡片验证逻辑
     - 验证 URL、name、icon 必填字段
     - _Requirements: 3.2_
   - [ ]* 2.3 编写属性测试：卡片验证拒绝不完整数据
     - **Property 3: Card validation rejects incomplete data**
     - **Validates: Requirements 3.2**
-  - [ ] 2.4 实现 Zustand store
+
+  - [x] 2.4 实现 Zustand store
+
     - 创建 store/navigation-store.ts
     - 实现 cards、categories、editMode、searchQuery、theme 状态
     - 实现 addCard、updateCard、deleteCard、reorderCards actions
@@ -50,6 +58,7 @@
   - [ ]* 2.6 编写属性测试：重排序保留所有卡片
     - **Property 6: Reorder preserves all cards**
     - **Validates: Requirements 3.5**
+
   - [ ] 2.7 实现本地存储持久化
     - 创建 lib/storage.ts 实现 save/load 函数
     - 使用 localStorage 存储导航数据
