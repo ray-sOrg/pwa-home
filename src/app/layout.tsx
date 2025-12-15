@@ -6,6 +6,15 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 export const metadata: Metadata = {
   title: "家庭云",
   description: "家庭网络服务导航入口",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icons/icon-192x192.svg", sizes: "192x192", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/icons/icon-192x192.svg", sizes: "192x192", type: "image/svg+xml" },
+    ],
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
