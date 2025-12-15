@@ -10,6 +10,7 @@ const withPWA = withPWAInit({
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  output: "standalone", // Docker 部署需要
   // 空的 turbopack 配置，让 Next.js 16 使用 Turbopack
   // next-pwa 的 webpack 配置会在生产构建时自动处理
   turbopack: {},

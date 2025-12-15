@@ -1,0 +1,90 @@
+# ========================================
+# 🔧 项目配置说明（复用到其他项目时需要修改）
+# ========================================
+# 需要修改的地方：
+# 1. 所有 "pwa-home" 改为你的项目名称
+# 2. Ingress host: home.tt829.cn 改为你的域名
+# 3. Ingress secretName: pwa-home-tls 改为 {项目名}-tls
+# 4. containerPort 和 targetPort: 根据你的项目端口修改（默认 3000）
+# 5. 如果有数据库等依赖，添加对应的 secret
+# ========================================
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pwa-home-deployment
+  labels:
+    app: pwa-home
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: pwa-home
+  template:
+    metadata:
+      labels:
+        app: pwa-home
+    spec:
+      imagePullSecrets:
+        - name: tencent-tcr-secret
+      containers:
+        - name: pwa-home
+          image: __IMAGE_NAME__:__IMAGE_TAG__
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pwa-home-service
+spec:
+  selector:
+    app: pwa-home
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pwa-home-ingress
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  tls:
+    - hosts:
+        - home.tt829.cn
+      secretName: pwa-home-tls
+  rules:
+    - host: home.tt829.cn
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pwa-home-service
+                port:
+                  number: 80
