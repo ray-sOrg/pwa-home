@@ -7,9 +7,12 @@ import { HistoryCard } from "@/components/HistoryCard";
 import { SimpleNavigationCard } from "@/components/SimpleNavigationCard";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { useTranslation } from "@/components/LanguageProvider";
 
 export default function HomePage() {
   const router = useRouter();
+  const { t } = useTranslation();
 
   const handleAnnouncementInfo = () => {
     console.log("Show announcement details");
@@ -31,7 +34,10 @@ export default function HomePage() {
           <button className="p-2 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors">
             <HomeIcon className="w-5 h-5 text-black dark:text-white" />
           </button>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <LanguageToggle />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -40,11 +46,11 @@ export default function HomePage() {
         {/* Announcements */}
         <section>
           <h2 className="text-xl font-bold text-black dark:text-white mb-4">
-            Announcements
+            {t.home.announcements}
           </h2>
           <AnnouncementCard
-            title="New Family Cloud Features Released"
-            description="Explore the latest updates in our family cloud."
+            title={t.home.announcementTitle}
+            description={t.home.announcementDescription}
             onInfoClick={handleAnnouncementInfo}
           />
         </section>
@@ -52,31 +58,31 @@ export default function HomePage() {
         {/* Recent Browsing History */}
         <section>
           <h2 className="text-xl font-bold text-black dark:text-white mb-4">
-            Recent Browsing History
+            {t.home.recentBrowsingHistory}
           </h2>
-          <HistoryCard description="Check out what your family has been viewing." />
+          <HistoryCard description={t.home.historyDescription} />
         </section>
 
         {/* Navigation */}
         <section>
           <h2 className="text-xl font-bold text-black dark:text-white mb-4">
-            Navigation
+            {t.common.navigation}
           </h2>
           <div className="grid grid-cols-2 gap-4">
             <SimpleNavigationCard
-              title="Home"
+              title={t.common.home}
               onClick={() => handleNavigationClick("home")}
             />
             <SimpleNavigationCard
-              title="Photos"
+              title={t.common.photos}
               onClick={() => handleNavigationClick("photos")}
             />
             <SimpleNavigationCard
-              title="Videos"
+              title={t.common.videos}
               onClick={() => handleNavigationClick("videos")}
             />
             <SimpleNavigationCard
-              title="Documents"
+              title={t.common.documents}
               onClick={() => handleNavigationClick("documents")}
             />
           </div>

@@ -2,27 +2,30 @@
 
 import { Home, Image, Video, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/components/LanguageProvider";
 
 interface BottomNavigationProps {
   activeTab?: string;
   onTabChange?: (tab: string) => void;
 }
 
-const navItems = [
-  { id: "home", label: "Home", icon: Home },
-  { id: "photos", label: "Photos", icon: Image },
-  { id: "videos", label: "Videos", icon: Video },
-  { id: "documents", label: "Documents", icon: FileText },
+const navItemsConfig = [
+  { id: "home", labelKey: "home" as const, icon: Home },
+  { id: "photos", labelKey: "photos" as const, icon: Image },
+  { id: "videos", labelKey: "videos" as const, icon: Video },
+  { id: "documents", labelKey: "documents" as const, icon: FileText },
 ];
 
 export function BottomNavigation({
   activeTab = "home",
   onTabChange,
 }: BottomNavigationProps) {
+  const { t } = useTranslation();
+
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-black border-t border-black/5 dark:border-white/10 safe-area-inset-bottom">
       <div className="max-w-lg mx-auto flex items-center justify-around px-4 py-2">
-        {navItems.map((item) => {
+        {navItemsConfig.map((item) => {
           const Icon = item.icon;
           const isActive = activeTab === item.id;
 
@@ -38,7 +41,7 @@ export function BottomNavigation({
               )}
             >
               <Icon className="w-6 h-6" />
-              <span className="text-xs font-medium">{item.label}</span>
+              <span className="text-xs font-medium">{t.common[item.labelKey]}</span>
             </button>
           );
         })}
