@@ -18,7 +18,7 @@ export interface ServiceConfig {
  * @param timeout - 超时时间（毫秒）
  * @returns Promise<boolean> - 是否可访问
  */
-async function checkUrlAccessibility(url: string, timeout = 3000): Promise<boolean> {
+async function checkUrlAccessibility(url: string, timeout = 5000): Promise<boolean> {
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeout);
@@ -46,15 +46,15 @@ async function checkUrlAccessibility(url: string, timeout = 3000): Promise<boole
  */
 export async function getBestAvailableUrl(config: ServiceConfig): Promise<string> {
   const urls = [
-    { url: `http://${config.homeNetwork}`, type: 'homeNetwork' },
-    { url: `http://${config.tailscaleNetwork}`, type: 'tailscaleNetwork' },
-    { url: config.publicNetwork, type: 'publicNetwork' },
+    { url: `http://${config.homeNetwork}`, type: 'homeNetwork', timeout: 2000 },
+    { url: `http://${config.tailscaleNetwork}`, type: 'tailscaleNetwork', timeout: 3000 },
+    { url: config.publicNetwork, type: 'publicNetwork', timeout: 5000 },
   ];
 
   // 依次检测每个地址的可用性
-  for (const { url, type } of urls) {
+  for (const { url, type, timeout } of urls) {
     console.log(`🔍 检测 ${type}: ${url}`);
-    const isAccessible = await checkUrlAccessibility(url);
+    const isAccessible = await checkUrlAccessibility(url, timeout);
     
     if (isAccessible) {
       console.log(`✅ 使用 ${type}: ${url}`);
