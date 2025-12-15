@@ -1,6 +1,6 @@
 "use client";
 
-import { Image, Video, FileText } from "lucide-react";
+import { Home, Image, Video, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/components/LanguageProvider";
 
@@ -10,13 +10,14 @@ interface BottomNavigationProps {
 }
 
 const navItemsConfig = [
+  { id: "home", labelKey: "home" as const, icon: Home },
   { id: "photos", labelKey: "photos" as const, icon: Image },
   { id: "videos", labelKey: "videos" as const, icon: Video },
   { id: "documents", labelKey: "documents" as const, icon: FileText },
 ];
 
 export function BottomNavigation({
-  activeTab = "photos",
+  activeTab = "home",
   onTabChange,
 }: BottomNavigationProps) {
   const { t } = useTranslation();
