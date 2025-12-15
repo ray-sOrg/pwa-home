@@ -3,9 +3,7 @@
 import { Home as HomeIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { AnnouncementCard } from "@/components/AnnouncementCard";
-import { HistoryCard } from "@/components/HistoryCard";
 import { SimpleNavigationCard } from "@/components/SimpleNavigationCard";
-import { BottomNavigation } from "@/components/BottomNavigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useTranslation } from "@/components/LanguageProvider";
@@ -20,14 +18,10 @@ export default function HomePage() {
 
   const handleNavigationClick = (section: string) => {
     router.push(`/${section}`);
-  };
-
-  const handleTabChange = (tab: string) => {
-    router.push(`/${tab === "home" ? "" : tab}`);
-  };
+  }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-black transition-colors pb-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-black transition-colors">
       {/* 头部 */}
       <header className="sticky top-0 z-10 bg-white dark:bg-black border-b border-black/5 dark:border-white/10">
         <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
@@ -55,24 +49,12 @@ export default function HomePage() {
           />
         </section>
 
-        {/* Recent Browsing History */}
-        <section>
-          <h2 className="text-xl font-bold text-black dark:text-white mb-4">
-            {t.home.recentBrowsingHistory}
-          </h2>
-          <HistoryCard description={t.home.historyDescription} />
-        </section>
-
         {/* Navigation */}
         <section>
           <h2 className="text-xl font-bold text-black dark:text-white mb-4">
             {t.common.navigation}
           </h2>
           <div className="grid grid-cols-2 gap-4">
-            <SimpleNavigationCard
-              title={t.common.home}
-              onClick={() => handleNavigationClick("home")}
-            />
             <SimpleNavigationCard
               title={t.common.photos}
               onClick={() => handleNavigationClick("photos")}
@@ -88,9 +70,6 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-
-      {/* 底部导航 */}
-      <BottomNavigation activeTab="home" onTabChange={handleTabChange} />
     </div>
   );
 }
