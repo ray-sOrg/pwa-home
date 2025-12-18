@@ -21,6 +21,10 @@ export default function HomePage() {
     router.push(`/${section}`);
   };
 
+  const handleExternalNavigation = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   const handleTabChange = (tab: string) => {
     router.push(`/${tab === "home" ? "" : tab}`);
   };
@@ -71,6 +75,10 @@ export default function HomePage() {
             <SimpleNavigationCard
               title={t.common.documents}
               onClick={() => handleNavigationClick("documents")}
+            />
+            <SimpleNavigationCard
+              title={t.common.chuanDai}
+              onClick={() => handleExternalNavigation("https://chuan-dai.tt829.cn/")}
             />
           </div>
         </section>

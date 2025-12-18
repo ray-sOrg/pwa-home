@@ -17,6 +17,7 @@ export interface Translations {
     photos: string;
     videos: string;
     documents: string;
+    chuanDai: string;
     navigation: string;
     toggleTheme: string;
     toggleLanguage: string;
@@ -71,6 +72,7 @@ export const zhCN: Translations = {
     photos: "照片",
     videos: "影视",
     documents: "文档",
+    chuanDai: "川·傣",
     navigation: "导航",
     toggleTheme: "切换主题",
     toggleLanguage: "切换语言",
@@ -121,6 +123,7 @@ export const en: Translations = {
     photos: "Photos",
     videos: "Media",
     documents: "Documents",
+    chuanDai: "Chuan·Dai",
     navigation: "Navigation",
     toggleTheme: "Toggle theme",
     toggleLanguage: "Toggle language",
