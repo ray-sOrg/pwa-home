@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 家庭云
 
-## Getting Started
+家庭网络服务导航入口 - 一个现代化的 PWA 应用，用于统一管理和访问家庭网络中的各类服务。
 
-First, run the development server:
+## 功能特性
+
+### 核心功能
+- **服务导航卡片** - 将家庭网络服务（如 NAS、媒体服务器、智能家居等）整理为可视化的导航卡片
+- **分类管理** - 支持自定义分类，将服务按用途分组（如影音娱乐、云存储、工具服务等）
+- **搜索功能** - 快速查找已添加的服务
+- **拖拽排序** - 自由调整卡片和分类的显示顺序
+
+### PWA 特性
+- **离线支持** - Service Worker 缓存，断网也能正常访问
+- **桌面图标** - 可安装到桌面，像原生应用一样使用
+- **响应式设计** - 完美适配手机、平板和桌面设备
+
+### 个性化
+- **主题切换** - 支持浅色/深色主题
+- **多语言** - 中文/英文界面切换
+- **本地存储** - 所有数据保存在浏览器本地，不上云
+
+## 技术栈
+
+- **框架**: Next.js 16 (App Router)
+- **UI**: React 19 + Tailwind CSS v4
+- **状态管理**: Zustand
+- **动画**: Framer Motion
+- **图标**: Lucide React
+- **PWA**: next-pwa
+- **测试**: Vitest + React Testing Library
+- **构建工具**: Bun
+
+## 开发
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 安装依赖
+bun install
+
+# 启动开发服务器
+bun run dev
+
+# 构建（必须使用 --webpack，next-pwa 不支持 Turbopack）
+bun run build
+
+# 运行生产环境
+bun run start
+
+# 运行测试
+bun run test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 部署
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+项目支持 Docker 容器化部署，配置文件位于 `k8s/` 目录。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 许可证
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT

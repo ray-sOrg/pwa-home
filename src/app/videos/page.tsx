@@ -11,9 +11,9 @@ import { cardVariants } from "@/lib/animations";
 import { useBestAvailableUrl, type ServiceConfig } from "@/lib/network";
 
 const serviceConfig: ServiceConfig = {
-  homeNetwork: "192.168.31.28:3000",
-  tailscaleNetwork: "100.67.1.16:3000",
-  publicNetwork: "https://mp.tt829.cn/",
+  homeNetwork: "192.168.31.28:8096",
+  tailscaleNetwork: "192.168.31.28:8096",
+  publicNetwork: "https://jellyfin.tt829.cn",
   account: "admin",
   password: "ttangtao123",
 };

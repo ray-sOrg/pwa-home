@@ -8,10 +8,20 @@ import { BottomNavigation } from "@/components/BottomNavigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useTranslation } from "@/components/LanguageProvider";
+import { useBestAvailableUrl, type ServiceConfig } from "@/lib/network";
+
+const mpServiceConfig: ServiceConfig = {
+  homeNetwork: "192.168.31.28:3000",
+  tailscaleNetwork: "192.168.31.28:3000",
+  publicNetwork: "https://mp.tt829.cn",
+  account: "",
+  password: "",
+};
 
 export default function HomePage() {
   const router = useRouter();
   const { t } = useTranslation();
+  const [mpUrl] = useBestAvailableUrl(mpServiceConfig);
 
   const handleAnnouncementInfo = () => {
     console.log("Show announcement details");
@@ -79,6 +89,10 @@ export default function HomePage() {
             <SimpleNavigationCard
               title={t.common.chuanDai}
               onClick={() => handleExternalNavigation("https://chuan-dai.tt829.cn/")}
+            />
+            <SimpleNavigationCard
+              title={t.common.mp}
+              onClick={() => handleExternalNavigation(mpUrl)}
             />
           </div>
         </section>

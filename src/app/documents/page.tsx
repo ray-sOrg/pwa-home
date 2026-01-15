@@ -12,7 +12,7 @@ import { useBestAvailableUrl, type ServiceConfig } from "@/lib/network";
 
 const serviceConfig: ServiceConfig = {
   homeNetwork: "192.168.31.28:8081",
-  tailscaleNetwork: "100.67.1.16:8081",
+  tailscaleNetwork: "192.168.31.28:8081",
   publicNetwork: "https://cloud.tt829.cn/",
   account: "admin",
   password: "ttangtao123",
