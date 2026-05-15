@@ -40,26 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js', { scope: '/zh' }).then(
-                    function(registration) {
-                      console.log('SW registered: ', registration);
-                    },
-                    function(err) {
-                      console.log('SW registration failed: ', err);
-                    }
-                  );
-                });
-              }
-            `,
-          }}
-        />
-      </head>
+      <head />
       <body className="antialiased">
         <ThemeProvider
           attribute="class"

@@ -1,17 +1,18 @@
 import type { NextConfig } from "next";
-import withPWAInit from "next-pwa";
+import withSerwistInit from "@serwist/next";
 
-const withPWA = withPWAInit({
-  dest: "public",
+const withSerwist = withSerwistInit({
+  swSrc: "src/app/sw.ts",
+  swDest: "public/sw.js",
+  scope: "/",
   register: true,
-  skipWaiting: true,
   disable: process.env.NODE_ENV === "development",
 });
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: "standalone",
-  // 注意：next-pwa 不支持 Turbopack，构建时使用 Webpack
+  // Serwist 的 webpack 集成需要使用 Webpack 构建。
 };
 
-export default withPWA(nextConfig);
+export default withSerwist(nextConfig);

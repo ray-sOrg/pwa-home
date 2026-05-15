@@ -24,7 +24,7 @@ async function checkUrlAccessibility(url: string, timeout = 5000): Promise<boole
     const timeoutId = setTimeout(() => controller.abort(), timeout);
 
     // 使用 fetch 进行健康检查
-    const response = await fetch(url, {
+    await fetch(url, {
       method: 'HEAD',
       mode: 'no-cors', // 避免 CORS 问题
       signal: controller.signal,
@@ -32,7 +32,7 @@ async function checkUrlAccessibility(url: string, timeout = 5000): Promise<boole
 
     clearTimeout(timeoutId);
     return true;
-  } catch (error) {
+  } catch {
     return false;
   }
 }
@@ -95,7 +95,7 @@ export function useBestAvailableUrl(config: ServiceConfig): [string, boolean] {
     return () => {
       mounted = false;
     };
-  }, [config.homeNetwork, config.tailscaleNetwork, config.publicNetwork]);
+  }, [config]);
 
   return [url, isLoading];
 }

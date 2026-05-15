@@ -1,5 +1,6 @@
 "use client";
 
+import { createElement } from "react";
 import { motion } from "framer-motion";
 import { Pencil, Trash2 } from "lucide-react";
 import type { NavigationCardData } from "@/types";
@@ -100,7 +101,7 @@ export function NavigationCard({
                         "text-white shadow-lg"
                     )}
                 >
-                    <IconComponent className="w-6 h-6" />
+                    {createElement(IconComponent, { className: "w-6 h-6" })}
                 </div>
 
                 <span className="text-black dark:text-white text-sm font-medium truncate w-full">

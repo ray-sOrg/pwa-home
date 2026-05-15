@@ -27,7 +27,7 @@
 - **状态管理**: Zustand
 - **动画**: Framer Motion
 - **图标**: Lucide React
-- **PWA**: next-pwa
+- **PWA**: Serwist (`@serwist/next`)
 - **测试**: Vitest + React Testing Library
 - **构建工具**: Bun
 
@@ -40,7 +40,7 @@ bun install
 # 启动开发服务器
 bun run dev
 
-# 构建（必须使用 --webpack，next-pwa 不支持 Turbopack）
+# 构建（Serwist 当前使用 Webpack 集成）
 bun run build
 
 # 运行生产环境
@@ -52,7 +52,7 @@ bun run test
 
 ## 部署
 
-项目支持 Docker 容器化部署，配置文件位于 `k8s/` 目录。
+项目支持 Docker 容器化部署，Kubernetes 配置文件位于仓库根目录的 `deployment.yaml`。
 
 ## 许可证
 

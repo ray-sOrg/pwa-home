@@ -5,13 +5,13 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "家庭云",
     short_name: "家庭云",
     description: "家庭网络服务导航入口",
-    start_url: "/zh/home",
-    scope: "/zh",
+    start_url: "/",
+    scope: "/",
     display: "standalone",
     background_color: "#ffffff",
     theme_color: "#ffffff",
     orientation: "portrait",
-    id: "/zh/home",
+    id: "/",
     icons: [
       {
         src: "/icons/icon-192x192.png",

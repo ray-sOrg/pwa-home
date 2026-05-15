@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { useLanguageStore } from "@/store/language-store";
-import type { Locale } from "@/lib/i18n/locales";
 import { translations } from "@/lib/i18n/locales";
 
 interface LanguageProviderProps {
@@ -24,13 +23,31 @@ const languageScript = `
 })();
 `;
 
+function subscribeToClientSnapshot() {
+  return () => {};
+}
+
+function getClientSnapshot() {
+  return true;
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
+function useMounted() {
+  return React.useSyncExternalStore(
+    subscribeToClientSnapshot,
+    getClientSnapshot,
+    getServerSnapshot
+  );
+}
+
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [mounted, setMounted] = React.useState(false);
   const locale = useLanguageStore((state) => state.locale);
 
   // 同步 html lang 属性
   React.useEffect(() => {
-    setMounted(true);
     document.documentElement.lang = locale;
   }, [locale]);
 
@@ -45,11 +62,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
 // 自定义 hook 用于获取翻译
 export function useTranslation() {
   const { locale, setLocale, t } = useLanguageStore();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   // 返回带有 mounted 状态的翻译，避免服务端渲染不一致
   return {

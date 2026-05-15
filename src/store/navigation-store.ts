@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { AppState, NavigationCardData, Category, Theme } from "@/types";
+import type { AppState, NavigationCardData, Category } from "@/types";
 import {
   saveCards,
   loadCards,
@@ -16,7 +16,7 @@ function generateId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 }
 
-export const useNavigationStore = create<AppState>((set, get) => ({
+export const useNavigationStore = create<AppState>((set) => ({
   // 初始状态
   cards: defaultCards,
   categories: defaultCategories,
