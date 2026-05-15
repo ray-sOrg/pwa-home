@@ -94,6 +94,10 @@ export default function HomePage() {
               title={t.common.mp}
               onClick={() => handleExternalNavigation(mpUrl)}
             />
+            <SimpleNavigationCard
+              title={t.common.weight}
+              onClick={() => handleExternalNavigation("https://weight.tt829.cn")}
+            />
           </div>
         </section>
       </main>

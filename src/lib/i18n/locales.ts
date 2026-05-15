@@ -19,6 +19,7 @@ export interface Translations {
     documents: string;
     chuanDai: string;
     mp: string;
+    weight: string;
     navigation: string;
     toggleTheme: string;
     toggleLanguage: string;
@@ -75,6 +76,7 @@ export const zhCN: Translations = {
     documents: "文档",
     chuanDai: "川·傣",
     mp: "MoviePilot",
+    weight: "体重管理",
     navigation: "导航",
     toggleTheme: "切换主题",
     toggleLanguage: "切换语言",
@@ -127,6 +129,7 @@ export const en: Translations = {
     documents: "Documents",
     chuanDai: "Chuan·Dai",
     mp: "MoviePilot",
+    weight: "Weight",
     navigation: "Navigation",
     toggleTheme: "Toggle theme",
     toggleLanguage: "Toggle language",
